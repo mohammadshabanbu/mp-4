@@ -3,12 +3,11 @@ import Loading from "@/components/Loading";
 import {Suspense} from "react"
 import getCards from "@/lib/getCards";
 
-interface PageProps {
-    params: { rarity: string };
-}
 
-export default async function RarityPage({ params }: PageProps) {
-    const rarity = decodeURIComponent(params.rarity);
+
+export default async function RarityPage({ params }: { params: Promise<{ rarity: string }> }) {
+    const { rarity } = await params;
+    const deRarity = decodeURIComponent(rarity);
     const cards = await getCards();
 
     return (
@@ -19,7 +18,7 @@ export default async function RarityPage({ params }: PageProps) {
                 </main>
             }
         >
-            <CurrentCards rarity={rarity} cards={cards ?? []} />
+            <CurrentCards rarity={deRarity} cards={cards ?? []} />
         </Suspense>
     );
 }
