@@ -5,8 +5,8 @@ import getCards from "@/lib/getCards";
 
 interface PageProps {
     params: { rarity: string };
-    searchParams?: { [key: string]: string | string[] | undefined };
 }
+
 export default async function CityPage({ params }: PageProps) {
     const rarity = decodeURIComponent(params.rarity);
     const cards = await getCards();
