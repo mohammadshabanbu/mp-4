@@ -3,7 +3,13 @@ import Loading from "@/components/Loading";
 import {Suspense} from "react"
 import getCards from "@/lib/getCards";
 
-export default async function CityPage({ params }: { params: { rarity: string } }) {
+type PageProps = {
+    params: {
+        rarity: string;
+    };
+};
+
+export default async function CityPage({ params }: PageProps) {
     const rarity = decodeURIComponent(params.rarity);
     const cards = await getCards();
 
