@@ -7,7 +7,7 @@ interface PageProps {
     params: { rarity: string };
 }
 
-export default async function CityPage({ params }: PageProps) {
+export default async function RarityPage({ params }: PageProps) {
     const rarity = decodeURIComponent(params.rarity);
     const cards = await getCards();
 
